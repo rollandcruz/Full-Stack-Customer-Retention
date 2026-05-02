@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Customer Retention AI Agent</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="workspace">
+        <aside class="panel inputs">
+          <div class="brand">
+            <span class="mark">CR</span>
+            <div>
+              <h1>Customer Retention AI Agent</h1>
+              <p>Predict churn risk and generate next-best save actions.</p>
+            </div>
+          </div>
+
+          <div class="toolbar">
+            <button id="load-risky" type="button">Load At-Risk</button>
+            <button id="load-stable" type="button">Load Stable</button>
+          </div>
+
+          <form id="customer-form">
+            <div class="grid two">
+              <label>
+                Age
+                <input name="Age" type="number" min="18" max="90" value="52" required />
+              </label>
+              <label>
+                Tenure
+                <input name="Tenure" type="number" min="1" max="120" value="8" required />
+              </label>
+            </div>
+
+            <div class="grid two">
+              <label>
+                Gender
+                <select name="Gender">
+                  <option>Female</option>
+                  <option>Male</option>
+                </select>
+              </label>
+              <label>
+                Subscription
+                <select name="Subscription Type">
+                  <option>Basic</option>
+                  <option>Standard</option>
+                  <option>Premium</option>
+                </select>
+              </label>
+            </div>
+
+            <label>
+              Contract Length
+              <select name="Contract Length">
+                <option>Monthly</option>
+                <option>Quarterly</option>
+                <option>Annual</option>
+              </select>
+            </label>
+
+            <label>
+              Usage Frequency
+              <input name="Usage Frequency" type="range" min="1" max="30" value="4" />
+              <output data-for="Usage Frequency">4</output>
+            </label>
+
+            <label>
+              Support Calls
+              <input name="Support Calls" type="range" min="0" max="10" value="8" />
+              <output data-for="Support Calls">8</output>
+            </label>
+
+            <label>
+              Payment Delay
+              <input name="Payment Delay" type="range" min="0" max="30" value="21" />
+              <output data-for="Payment Delay">21</output>
+            </label>
+
+            <div class="grid two">
+              <label>
+                Total Spend
+                <input name="Total Spend" type="number" min="0" value="420" required />
+              </label>
+              <label>
+                Last Interaction
+                <input name="Last Interaction" type="number" min="1" max="60" value="24" required />
+              </label>
+            </div>
+
+            <button class="primary" type="submit">Analyze Customer</button>
+          </form>
+        </aside>
+
+        <section class="panel results">
+          <div class="score-row">
+            <div>
+              <p class="eyebrow">Churn Probability</p>
+              <strong id="score">--</strong>
+            </div>
+            <span id="band" class="band">Ready</span>
+          </div>
+
+          <div class="meter" aria-hidden="true">
+            <span id="meter-fill"></span>
+          </div>
+
+          <section class="section">
+            <div class="section-title">
+              <h2>Risk Drivers</h2>
+              <span id="accuracy">Training...</span>
+            </div>
+            <div id="drivers" class="driver-list"></div>
+          </section>
+
+          <section class="section">
+            <div class="section-title">
+              <h2>Recommended Actions</h2>
+              <span>Agent playbook</span>
+            </div>
+            <ol id="actions" class="actions"></ol>
+          </section>
+
+          <section class="section stats">
+            <div>
+              <span id="rows">--</span>
+              <p>training rows</p>
+            </div>
+            <div>
+              <span id="baseline">--</span>
+              <p>baseline churn</p>
+            </div>
+            <div>
+              <span id="sample">--</span>
+              <p>sample used</p>
+            </div>
+          </section>
+        </section>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

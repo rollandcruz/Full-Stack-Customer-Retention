@@ -1,0 +1,2 @@
+Retention AI Agent running at http://127.0.0.1:8000
+Model accuracy: 0.882 on sampled holdout rows
